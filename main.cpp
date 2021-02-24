@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "worker.h"
+#include <controller.h>
 
 int main(int argc, char *argv[])
 {
@@ -10,10 +10,10 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    Worker worker;
+    Controller controller;
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("calculations", &worker); // worker będzie używany w QML pod nazwą calculations
+    engine.rootContext()->setContextProperty("calculations", &controller);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
